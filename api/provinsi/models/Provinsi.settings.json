@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "restaurants",
+  "collectionName": "provinsis",
   "info": {
-    "name": "restaurant",
+    "name": "provinsi",
     "description": ""
   },
   "options": {
@@ -16,12 +16,9 @@
       "required": true,
       "type": "string"
     },
-    "description": {
-      "type": "richtext"
-    },
-    "categories": {
-      "collection": "category",
-      "via": "restaurants"
+    "kabupatens": {
+      "collection": "kabupaten",
+      "via": "provinsi"
     }
   }
 }

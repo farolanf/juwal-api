@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "kabupatens",
+  "info": {
+    "name": "kabupaten",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "provinsi": {
+      "model": "provinsi",
+      "via": "kabupatens"
+    }
+  }
+}

@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/restaurants",
-      "handler": "Restaurant.find",
+      "path": "/kabupatens",
+      "handler": "Kabupaten.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/restaurants/count",
-      "handler": "Restaurant.count",
+      "path": "/kabupatens/count",
+      "handler": "Kabupaten.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/restaurants/:id",
-      "handler": "Restaurant.findOne",
+      "path": "/kabupatens/:id",
+      "handler": "Kabupaten.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/restaurants",
-      "handler": "Restaurant.create",
+      "path": "/kabupatens",
+      "handler": "Kabupaten.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/restaurants/:id",
-      "handler": "Restaurant.update",
+      "path": "/kabupatens/:id",
+      "handler": "Kabupaten.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/restaurants/:id",
-      "handler": "Restaurant.delete",
+      "path": "/kabupatens/:id",
+      "handler": "Kabupaten.delete",
       "config": {
         "policies": []
       }

@@ -1,0 +1,19 @@
+{
+  "info": {
+    "name": "fieldvalue",
+    "description": ""
+  },
+  "connection": "default",
+  "collectionName": "groups_fieldvalues",
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string",
+      "unique": true
+    },
+    "value": {
+      "required": true,
+      "type": "json"
+    }
+  }
+}

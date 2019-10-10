@@ -1,0 +1,44 @@
+{
+  "connection": "default",
+  "collectionName": "products",
+  "info": {
+    "name": "product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "fields": {
+      "group": "fieldvalue",
+      "type": "group"
+    },
+    "kabupaten": {
+      "model": "kabupaten"
+    },
+    "category": {
+      "model": "category",
+      "via": "products"
+    },
+    "producttype": {
+      "model": "producttype",
+      "via": "products"
+    }
+  }
+}

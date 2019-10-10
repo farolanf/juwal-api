@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "categories",
+  "collectionName": "producttypes",
   "info": {
-    "name": "category",
+    "name": "producttype",
     "description": ""
   },
   "options": {
@@ -15,20 +15,18 @@
   },
   "attributes": {
     "name": {
-      "required": true,
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
-    "category": {
-      "model": "category",
-      "via": "categories"
-    },
-    "categories": {
-      "collection": "category",
-      "via": "category"
+    "fields": {
+      "group": "field",
+      "type": "group",
+      "repeatable": true
     },
     "products": {
       "collection": "product",
-      "via": "category"
+      "via": "producttype"
     }
   }
 }
