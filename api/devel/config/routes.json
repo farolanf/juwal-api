@@ -19,6 +19,16 @@
           "global.isDevelopment"
         ]
       }
+    },
+    {
+      "method": "GET",
+      "path": "/devel/reset-product-types",
+      "handler": "Devel.resetProductTypes",
+      "config": {
+        "policies": [
+          "global.isDevelopment"
+        ]
+      }
     }
   ]
 }

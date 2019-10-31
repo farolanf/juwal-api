@@ -18,9 +18,7 @@ module.exports = {
         await strapi.services.category.create({ name: childName, parent: parent._id })
       })
     })
-    ctx.send({
-      count: await strapi.services.category.count()
-    })
+    ctx.send('ok')
   },
 
   async resetProvinsi (ctx) {
@@ -34,8 +32,25 @@ module.exports = {
         await strapi.services.kabupaten.create({ name: kabupatenName, provinsi: provinsi._id })
       })
     })
-    ctx.send({
-      count: await strapi.services.category.count()
+    ctx.send('ok')
+  },
+
+  async resetProductTypes (ctx) {
+    const content = fs.readFileSync('data/product-types.yml')
+    const productTypes = yaml.parse(content.toString())
+    await strapi.services.producttype.delete({})
+    await strapi.services.field.delete({})
+    _.each(productTypes, async (productType, productTypeName) => {
+      const category = await strapi.services.category.findOne({ name: productType.category })
+      const fields = await Promise.all(productType.fields.map(async field => {
+        return await strapi.services.field.create(field)
+      }))
+      await strapi.services.producttype.create({
+        name: productTypeName,
+        category: category._id,
+        fields: fields.map(field => field._id)
+      })
     })
+    ctx.send('ok')
   }
 };
