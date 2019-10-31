@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/devel/reset-categories",
+      "handler": "Devel.resetCategories",
+      "config": {
+        "policies": [
+          "global.isDevelopment"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/devel/reset-provinsi",
+      "handler": "Devel.resetProvinsi",
+      "config": {
+        "policies": [
+          "global.isDevelopment"
+        ]
+      }
+    }
+  ]
+}

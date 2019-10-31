@@ -20,13 +20,10 @@
       "required": true
     },
     "fields": {
-      "group": "field",
-      "type": "group",
-      "repeatable": true
+      "collection": "field"
     },
-    "products": {
-      "collection": "product",
-      "via": "producttype"
+    "category": {
+      "model": "category"
     }
   }
 }

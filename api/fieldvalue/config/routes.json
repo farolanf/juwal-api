@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/fieldvalues",
+      "handler": "Fieldvalue.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fieldvalues/count",
+      "handler": "Fieldvalue.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fieldvalues/:id",
+      "handler": "Fieldvalue.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fieldvalues",
+      "handler": "Fieldvalue.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/fieldvalues/:id",
+      "handler": "Fieldvalue.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/fieldvalues/:id",
+      "handler": "Fieldvalue.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

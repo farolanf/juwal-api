@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "categories",
+  "collectionName": "fieldvalues",
   "info": {
-    "name": "category",
+    "name": "fieldvalue",
     "description": ""
   },
   "options": {
@@ -14,17 +14,12 @@
     "comment": ""
   },
   "attributes": {
-    "name": {
+    "value": {
       "required": true,
-      "type": "string"
+      "type": "json"
     },
-    "parent": {
-      "model": "category",
-      "via": "categories"
-    },
-    "categories": {
-      "collection": "category",
-      "via": "parent"
+    "field": {
+      "model": "field"
     }
   }
 }

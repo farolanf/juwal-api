@@ -25,20 +25,22 @@
       "type": "integer",
       "required": true
     },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
     "fields": {
-      "group": "fieldvalue",
-      "type": "group"
+      "collection": "fieldvalue"
+    },
+    "producttype": {
+      "model": "producttype"
     },
     "kabupaten": {
       "model": "kabupaten"
     },
     "category": {
-      "model": "category",
-      "via": "products"
-    },
-    "producttype": {
-      "model": "producttype",
-      "via": "products"
+      "model": "category"
     }
   }
 }
