@@ -43,7 +43,13 @@ module.exports = {
     _.each(productTypes, async (productType, productTypeName) => {
       const category = await strapi.services.category.findOne({ name: productType.category })
       const fields = await Promise.all(productType.fields.map(async field => {
-        return await strapi.services.field.create(field)
+        return await strapi.services.field.create({
+          label: field.label,
+          producttype: productTypeName,
+          options: {
+            value: field.options
+          }
+        })
       }))
       await strapi.services.producttype.create({
         name: productTypeName,

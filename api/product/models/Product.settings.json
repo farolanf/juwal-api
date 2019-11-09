@@ -33,14 +33,14 @@
     "fields": {
       "collection": "fieldvalue"
     },
-    "producttype": {
-      "model": "producttype"
-    },
     "kabupaten": {
       "model": "kabupaten"
     },
     "category": {
       "model": "category"
+    },
+    "producttype": {
+      "model": "producttype"
     }
   }
 }

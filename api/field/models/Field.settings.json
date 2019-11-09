@@ -14,11 +14,6 @@
     "comment": ""
   },
   "attributes": {
-    "name": {
-      "unique": true,
-      "required": true,
-      "type": "string"
-    },
     "label": {
       "required": true,
       "type": "string"
@@ -26,6 +21,16 @@
     "options": {
       "required": true,
       "type": "json"
+    },
+    "producttype": {
+      "enum": [
+        "Handphone",
+        "Tablet",
+        "Mobil",
+        "Motor"
+      ],
+      "type": "enumeration",
+      "required": true
     }
   }
 }

@@ -19,11 +19,11 @@
       "unique": true,
       "required": true
     },
-    "fields": {
-      "collection": "field"
-    },
     "category": {
       "model": "category"
+    },
+    "fields": {
+      "collection": "field"
     }
   }
 }

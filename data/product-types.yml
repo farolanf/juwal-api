@@ -1,33 +1,25 @@
 Handphone:
   category: Elektronik & Gadget
   fields:
-    - name: merek_handphone
-      label: Merek
+    - label: Merek
       options:
-        value:
-          - LG
-          - Samsung
-    - name: warna_handphone
-      label: Warna
+        - LG
+        - Samsung
+    - label: Warna
       options:
-        value:
-          - Putih
-          - Hitam
-          - Silver
+        - Putih
+        - Hitam
+        - Silver
 
 Mobil:
   category: Mobil
   fields:
-    - name: merek_mobil
-      label: Merek
+    - label: Merek
       options:
-        value:
-          - Suzuki
-          - Toyota
-    - name: warna_mobil
-      label: Warna
+        - Suzuki
+        - Toyota
+    - label: Warna
       options:
-        value:
-          - Putih
-          - Hitam
-          - Silver
+        - Putih
+        - Hitam
+        - Silver
