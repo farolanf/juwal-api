@@ -30,6 +30,10 @@
       "via": "related",
       "plugin": "upload"
     },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
     "fields": {
       "collection": "fieldvalue"
     },
@@ -41,6 +45,11 @@
     },
     "producttype": {
       "model": "producttype"
+    },
+    "owner": {
+      "model": "user",
+      "via": "products",
+      "plugin": "users-permissions"
     }
   }
 }
