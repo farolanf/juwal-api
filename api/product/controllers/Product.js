@@ -37,5 +37,20 @@ module.exports = {
       entity = await strapi.services.product.create(ctx.request.body);
     }
     return sanitizeEntity(entity, { model: strapi.models.product });
-  }
+  },
+
+  async update(ctx) {
+    let entity = await strapi.services.product.findOne(ctx.params);
+    if (entity.owner.id !== ctx.state.user.id) {
+      return ctx.unauthorized()
+    }
+    if (ctx.is('multipart')) {
+      const { data, files } = parseMultipartData(ctx);
+      entity = await strapi.services.product.update(ctx.params, data, { files });
+    } else {
+      entity = await strapi.services.product.update(ctx.params, ctx.request.body);
+    }
+
+    return sanitizeEntity(entity, { model: strapi.models.product });
+  },
 }
