@@ -48,15 +48,11 @@ const uploadFiles = async (ctx, options) => {
     return ctx.badRequest()
   }
 
-  if (_.get(data, 'fileMetas.length', 0) > numMaxUploads) {
-    return ctx.badRequest()
-  }
-
   await Promise.all(_.get(data, 'fileMetas', []).map(async meta => {
     if (!_.has(meta, 'index')) {
       return ctx.badRequest()
     }
-    if (meta.index >= numMaxUploads) {
+    if (meta.index < 0 || meta.index >= numMaxUploads) {
       return ctx.badRequest()
     }
     // delete existing uploaded file
