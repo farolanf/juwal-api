@@ -1,16 +1,24 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "temp",
   "info": {
     "name": "temp",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "productImages": {
       "type": "json"
+    },
+    "owner": {
+      "unique": true,
+      "model": "user",
+      "plugin": "users-permissions"
     }
   }
 }

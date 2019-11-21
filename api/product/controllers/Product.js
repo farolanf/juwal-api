@@ -2,8 +2,18 @@
 
 const _ = require('lodash')
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils')
+const { uploadFiles } = require('../../../libs/upload')
 
 module.exports = {
+  async uploadImage(ctx) {
+    ctx.send(await uploadFiles(ctx, {
+      modelName: 'product',
+      tempFieldName: 'productImages',
+      fieldName: 'images',
+      numMaxUploads: strapi.config.maxProductImages
+    }))
+  },
+
   async find(ctx) {
     let entities;
     if (ctx.query._q) {

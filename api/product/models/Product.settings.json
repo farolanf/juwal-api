@@ -25,11 +25,6 @@
       "type": "integer",
       "required": true
     },
-    "images": {
-      "collection": "file",
-      "via": "related",
-      "plugin": "upload"
-    },
     "active": {
       "type": "boolean",
       "default": true
@@ -50,6 +45,9 @@
       "model": "user",
       "via": "products",
       "plugin": "users-permissions"
+    },
+    "images": {
+      "type": "json"
     }
   }
 }

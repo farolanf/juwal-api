@@ -1,6 +1,22 @@
 {
   "routes": [
     {
+      "method": "POST",
+      "path": "/products/upload-image",
+      "handler": "Product.uploadImage",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/products/:id/upload-image",
+      "handler": "Product.uploadImage",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/products",
       "handler": "Product.find",
