@@ -36,16 +36,14 @@ module.exports = {
   },
 
   async create(ctx) {
-    let entity;
-    if (ctx.is('multipart')) {
-      const { data, files } = parseMultipartData(ctx);
-      if (_.castArray(files.images).length > strapi.config.maxProductImages) {
-        return ctx.badRequest()
-      }
-      entity = await strapi.services.product.create(data, { files });
-    } else {
-      entity = await strapi.services.product.create(ctx.request.body);
-    }
+    const userTemp = await strapi.services.temp.findOrCreate(ctx.state.user.id, {     
+      productImages: [] 
+    })
+    const body = Object.assign({}, ctx.request.body, {
+      owner: ctx.state.user.id,
+      images: userTemp.productImages
+    })
+    const entity = await strapi.services.product.create(body);
     return sanitizeEntity(entity, { model: strapi.models.product });
   },
 

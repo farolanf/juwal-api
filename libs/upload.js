@@ -20,14 +20,10 @@ const uploadFiles = async (ctx, options) => {
     }
     filesField = entity[fieldName]
   } else {
-    let userTemp = await strapi.services.temp.findOne({ owner: ctx.state.user.id })
-    if (!userTemp) {
-      userTemp = await strapi.services.temp.create({
-        owner: ctx.state.user.id,
-        [tempFieldName]: []
-      })
-    }
-    filesField = userTemp[tempFieldName] || []
+    let userTemp = await strapi.services.temp.findOrCreate(ctx.state.user.id, {
+      [tempFieldName]: []
+    })
+    filesField = userTemp[tempFieldName]
   }
 
   const uploadService = strapi.plugins.upload.services.upload;
