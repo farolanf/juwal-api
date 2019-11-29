@@ -15,7 +15,7 @@ module.exports = {
     _.each(categories, async (children, name) => {
       const parent = await strapi.services.category.create({ name })
       _.each(children, async childName => {
-        await strapi.services.category.create({ name: childName, parent: parent._id })
+        await strapi.services.category.create({ name: childName, parent: parent.id })
       })
     })
     ctx.send('ok')
@@ -29,7 +29,7 @@ module.exports = {
     _.each(provinsis, async (kabupatens, provinsiName) => {
       const provinsi = await strapi.services.provinsi.create({ name: provinsiName })
       _.each(kabupatens, async kabupatenName => {
-        await strapi.services.kabupaten.create({ name: kabupatenName, provinsi: provinsi._id })
+        await strapi.services.kabupaten.create({ name: kabupatenName, provinsi: provinsi.id })
       })
     })
     ctx.send('ok')
@@ -53,8 +53,8 @@ module.exports = {
       }))
       await strapi.services.producttype.create({
         name: productTypeName,
-        category: category._id,
-        fields: fields.map(field => field._id)
+        category: category.id,
+        fields: fields.map(field => field.id)
       })
     })
     ctx.send('ok')

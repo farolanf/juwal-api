@@ -23,9 +23,9 @@ module.exports = {
       if (_.find(paramNames, name => _.startsWith(name, 'owner_'))) {
         return ctx.badRequest()
       }
-      if (_.find(paramNames, 'owner')) {
+      if (_.includes(paramNames, 'owner')) {
         // restrict find by owner only to the owner
-        if (!ctx.state.user || ctx.query.owner !== ctx.state.user._id) {
+        if (!ctx.state.user || ctx.query.owner !== ctx.state.user.id) {
           return ctx.badRequest()
         }
       }
