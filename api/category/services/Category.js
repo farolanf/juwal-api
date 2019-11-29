@@ -5,4 +5,13 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+  async deleteTree(params) {
+    const docs = await strapi.services.category.find(params)
+    const ids = docs.map(doc => doc.id)
+    if (ids.length) {
+      await this.deleteTree({ parent_in: ids })
+      await strapi.services.category.delete({ _id_in: ids })
+    }
+  }
+};
