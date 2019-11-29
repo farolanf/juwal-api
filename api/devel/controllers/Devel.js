@@ -11,9 +11,10 @@ module.exports = {
   async resetCategories (ctx) {
     const content = fs.readFileSync('data/categories.yml')
     const categories = yaml.parse(content.toString())
-    await strapi.services.category.delete({})
+    await strapi.services.category.deleteTree({ name: 'Products' })
+    const root = await strapi.services.category.create({ name: 'Products' })
     _.each(categories, async (children, name) => {
-      const parent = await strapi.services.category.create({ name })
+      const parent = await strapi.services.category.create({ name, parent: root.id })
       _.each(children, async childName => {
         await strapi.services.category.create({ name: childName, parent: parent.id })
       })
