@@ -20,7 +20,8 @@
       "required": true
     },
     "category": {
-      "model": "category"
+      "model": "category",
+      "via": "producttypes"
     },
     "fields": {
       "collection": "field"

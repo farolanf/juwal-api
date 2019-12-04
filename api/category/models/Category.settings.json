@@ -25,6 +25,10 @@
     "categories": {
       "collection": "category",
       "via": "parent"
+    },
+    "producttypes": {
+      "collection": "producttype",
+      "via": "category"
     }
   }
 }

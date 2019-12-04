@@ -38,15 +38,15 @@
     "category": {
       "model": "category"
     },
-    "producttype": {
-      "model": "producttype"
-    },
     "owner": {
       "model": "user",
       "plugin": "users-permissions"
     },
     "images": {
       "type": "json"
+    },
+    "producttype": {
+      "model": "producttype"
     }
   }
 }

@@ -14,7 +14,19 @@ module.exports = {
     } else {
       entities = await strapi.services.category.find(ctx.query, {
         path: 'categories',
-        populate: 'categories'
+        populate: [
+          {
+            path: 'categories',
+            populate: {
+              path: 'producttypes',
+              populate: 'fields'
+            }
+          },
+          {
+            path: 'producttypes',
+            populate: 'fields'
+          }
+        ]
       });
     }
 
