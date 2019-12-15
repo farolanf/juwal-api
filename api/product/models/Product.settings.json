@@ -35,9 +35,6 @@
     "kabupaten": {
       "model": "kabupaten"
     },
-    "category": {
-      "model": "category"
-    },
     "owner": {
       "model": "user",
       "plugin": "users-permissions"
@@ -47,6 +44,9 @@
     },
     "producttype": {
       "model": "producttype"
+    },
+    "category": {
+      "model": "category"
     }
   }
 }

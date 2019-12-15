@@ -13,11 +13,16 @@ module.exports = {
     const categories = yaml.parse(content.toString())
     await strapi.services.category.deleteTree({ name: 'Products' })
     const root = await strapi.services.category.create({ name: 'Products' })
+    let order = 0
     _.each(categories, async (children, name) => {
-      const parent = await strapi.services.category.create({ name, parent: root.id })
-      _.each(children, async childName => {
-        await strapi.services.category.create({ name: childName, parent: parent.id })
-      })
+      order = Math.floor(order / 1000) * 1000 + 1000;
+      (async function(order){
+        const parent = await strapi.services.category.create({ name, parent: root.id, order })
+        _.each(children, childName => {
+          order += 10
+          strapi.services.category.create({ name: childName, parent: parent.id, order })
+        })
+      }(order))
     })
     ctx.send('ok')
   },

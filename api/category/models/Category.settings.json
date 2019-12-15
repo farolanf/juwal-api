@@ -29,6 +29,11 @@
     "producttypes": {
       "collection": "producttype",
       "via": "category"
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": "0"
     }
   }
 }
