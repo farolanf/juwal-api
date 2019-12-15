@@ -10,6 +10,30 @@ Handphone:
         - Putih
         - Hitam
         - Silver
+    - label: Ukuran layar
+      options:
+        - 4"
+        - 4.5"
+        - 5"
+        - 6"
+
+Tablet:
+  category: Elektronik & Gadget
+  fields:
+    - label: Merek
+      options:
+        - LG
+        - Samsung
+    - label: Warna
+      options:
+        - Putih
+        - Hitam
+        - Silver
+    - label: Ukuran layar
+      options:
+        - 7"
+        - 8"
+        - 10"
 
 Mobil:
   category: Mobil

@@ -15,7 +15,7 @@ module.exports = {
     const root = await strapi.services.category.create({ name: 'Products' })
     let order = 0
     _.each(categories, async (children, name) => {
-      order = Math.floor(order / 1000) * 1000 + 1000;
+      order += 1000;
       (async function(order){
         const parent = await strapi.services.category.create({ name, parent: root.id, order })
         _.each(children, childName => {
@@ -46,22 +46,30 @@ module.exports = {
     const productTypes = yaml.parse(content.toString())
     await strapi.services.producttype.delete({})
     await strapi.services.field.delete({})
+    let order = 0
     _.each(productTypes, async (productType, productTypeName) => {
-      const category = await strapi.services.category.findOne({ name: productType.category })
-      const fields = await Promise.all(productType.fields.map(async field => {
-        return await strapi.services.field.create({
-          label: field.label,
-          producttype: productTypeName,
-          options: {
-            value: field.options
-          }
+      order += 100;
+      (async function(order) {
+        const productTypeOrder = order
+        const category = await strapi.services.category.findOne({ name: productType.category })
+        const fields = await Promise.all(productType.fields.map(async field => {
+          order += 4
+          return strapi.services.field.create({
+            label: field.label,
+            producttype: productTypeName,
+            options: {
+              value: field.options
+            },
+            order
+          })
+        }))
+        await strapi.services.producttype.create({
+          name: productTypeName,
+          category: category.id,
+          fields: fields.map(field => field.id),
+          order: productTypeOrder
         })
-      }))
-      await strapi.services.producttype.create({
-        name: productTypeName,
-        category: category.id,
-        fields: fields.map(field => field.id)
-      })
+      }(order))
     })
     ctx.send('ok')
   }

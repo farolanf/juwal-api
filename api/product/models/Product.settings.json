@@ -42,11 +42,11 @@
     "images": {
       "type": "json"
     },
-    "producttype": {
-      "model": "producttype"
-    },
     "category": {
       "model": "category"
+    },
+    "producttype": {
+      "model": "producttype"
     }
   }
 }

@@ -31,6 +31,10 @@
       ],
       "type": "enumeration",
       "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": "0"
     }
   }
 }

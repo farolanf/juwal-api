@@ -19,12 +19,16 @@
       "unique": true,
       "required": true
     },
-    "fields": {
-      "collection": "field"
-    },
     "category": {
       "model": "category",
       "via": "producttypes"
+    },
+    "fields": {
+      "collection": "field"
+    },
+    "order": {
+      "type": "integer",
+      "default": "0"
     }
   }
 }
