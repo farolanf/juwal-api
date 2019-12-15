@@ -1,10 +1,18 @@
 Mobil:
   - Mobil Bekas
-  - Aksesori
+  - Aksesoris
   - Audio Mobil
   - Spare Part
   - Velg dan Ban
   - Truk & Kendaraan Komersial
+  - Lain-lain
+
+Motor:
+  - Motor Bekas
+  - Aksesoris
+  - Helm
+  - Spare Part
+  - Lain-lain
 
 Elektronik & Gadget:
   - Handphone
@@ -16,6 +24,7 @@ Elektronik & Gadget:
   - Komputer
   - Lampu
   - TV & Audio, Video
+  - Lain-lain
 
 Rumah Tangga:
   - Makanan & Minuman
@@ -26,3 +35,52 @@ Rumah Tangga:
   - Lampu
   - Perlengkapan Rumah
   - Lain-lain
+
+Perlengkapan Bayi & Anak:
+  - Pakaian
+  - Perlengkapan Bayi
+  - Perlengkapan Ibu Bayi
+  - Boneka & Mainan Anak
+  - Buku Anak-anak
+  - Stroller
+  - Lain-lain
+
+Keperluan Pribadi:
+  - Fashion Wanita
+  - Fashion Pria
+  - Jam Tangan
+  - Pakaian Olahraga
+  - Perhiasan
+  - Make Up & Parfum
+  - Terapi & Pengobatan
+  - Perawatan
+  - Nutrisi & Suplemen
+  - Lain-lain
+
+Hobi & Olahraga:
+  - Olahraga
+  - Sepeda & Aksesoris
+  - Handicrafts
+  - Barang Antik
+  - Buku & Majalah
+  - Koleksi
+  - Mainan Hobi
+  - Lain-lain
+
+Properti:
+  - Bangunan Dijual
+  - Bangunan Disewakan
+  - Tanah Dijual
+  - Tanah Disewakan
+  
+Kantor & Industri:
+  - Peralatan Kantor
+  - Perlengkapan Usaha
+  - Mesin & Keperluan Industri
+  - Stationery
+  - Lain-lain
+
+Jasa & Lowongan Kerja:
+  - Lowongan
+  - Cari Pekerjaan
+  - Jasa
