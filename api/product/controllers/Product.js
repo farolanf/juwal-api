@@ -4,6 +4,16 @@ const _ = require('lodash')
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils')
 const { uploadFiles } = require('../../../libs/upload')
 
+const productPopulate = [
+  'category',
+  'kabupaten',
+  'producttype',
+  {
+    path: 'fields',
+    populate: 'field'
+  }
+]
+
 module.exports = {
   async uploadImage(ctx) {
     ctx.send(await uploadFiles(ctx, {
@@ -35,6 +45,11 @@ module.exports = {
     return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.product }));
   },
 
+  async findOne(ctx) {
+    const entity = await strapi.services.product.findOne(ctx.params, productPopulate);
+    return sanitizeEntity(entity, { model: strapi.models.product });
+  },
+
   async create(ctx) {
     const userTemp = await strapi.services.temp.findOrCreate(ctx.state.user.id, {     
       productImages: [] 
@@ -48,20 +63,17 @@ module.exports = {
     if (ctx.request.body.specfields) {
       entity.fields = await Promise.all(ctx.request.body.specfields.map(sf => {
         return strapi.services.fieldvalue.create({
-          field: sf.id,
+          field: sf.fieldId,
           value: { value: sf.value }
         })
       }))
     }
     await strapi.services.product.update({ id: entity.id }, entity)
 
-    entity = await strapi.services.product.findOne({ id: entity.id }, {
-      path: 'fields',
-      populate: 'field'
-    })
+    entity = await strapi.services.product.findOne({ id: entity.id }, productPopulate)
     return sanitizeEntity(entity, { model: strapi.models.product });
-
   },
+
   async update(ctx) {
     let entity = await strapi.services.product.findOne(ctx.params);
     if (entity.owner.id !== ctx.state.user.id) {
@@ -72,6 +84,24 @@ module.exports = {
       entity = await strapi.services.product.update(ctx.params, data, { files });
     } else {
       entity = await strapi.services.product.update(ctx.params, ctx.request.body);
+
+      if (ctx.request.body.specfields) {
+        entity.fields = await Promise.all(ctx.request.body.specfields.map(sf => {
+          if (sf.id) {
+            return strapi.services.fieldvalue.update({ id: sf.id }, {
+              field: sf.fieldId,
+              value: { value: sf.value }
+            })
+          } else {
+            return strapi.services.fieldvalue.create({
+              field: sf.fieldId,
+              value: { value: sf.value }
+            })
+          }
+        }))
+      }
+      await strapi.services.product.update({ id: entity.id }, entity)
+      entity = await strapi.services.product.findOne({ id: entity.id }, productPopulate)
     }
 
     return sanitizeEntity(entity, { model: strapi.models.product });
