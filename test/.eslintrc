@@ -1,0 +1,12 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "expect": true,
+    "assert": true,
+    "request": true,
+    "initStrapi": true,
+    "apiUrl": true
+  }
+}
