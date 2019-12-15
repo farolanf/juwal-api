@@ -43,10 +43,25 @@ module.exports = {
       owner: ctx.state.user.id,
       images: userTemp.productImages
     })
-    const entity = await strapi.services.product.create(body);
-    return sanitizeEntity(entity, { model: strapi.models.product });
-  },
+    let entity = await strapi.services.product.create(body);
 
+    if (ctx.request.body.specfields) {
+      entity.fields = await Promise.all(ctx.request.body.specfields.map(sf => {
+        return strapi.services.fieldvalue.create({
+          field: sf.id,
+          value: { value: sf.value }
+        })
+      }))
+    }
+    await strapi.services.product.update({ id: entity.id }, entity)
+
+    entity = await strapi.services.product.findOne({ id: entity.id }, {
+      path: 'fields',
+      populate: 'field'
+    })
+    return sanitizeEntity(entity, { model: strapi.models.product });
+
+  },
   async update(ctx) {
     let entity = await strapi.services.product.findOne(ctx.params);
     if (entity.owner.id !== ctx.state.user.id) {
