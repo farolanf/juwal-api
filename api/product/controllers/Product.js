@@ -58,6 +58,9 @@ module.exports = {
       owner: ctx.state.user.id,
       images: userTemp.productImages
     })
+    if (!body.producttype) {
+      delete body.producttype
+    }
     let entity = await strapi.services.product.create(body);
 
     if (ctx.request.body.specfields) {
