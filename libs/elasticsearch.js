@@ -24,5 +24,5 @@ exports.searchProducts = ({ query }) => {
         }
       }
     }
-  })
+  }).then(res => res.body)
 }
