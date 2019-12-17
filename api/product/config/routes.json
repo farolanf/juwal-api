@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "method": "GET",
+      "path": "/products/search",
+      "handler": "Product.search",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/products/upload-image",
       "handler": "Product.uploadImage",

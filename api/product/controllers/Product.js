@@ -3,6 +3,7 @@
 const _ = require('lodash')
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils')
 const { uploadFiles } = require('../../../libs/upload')
+const { indexProduct, searchProducts } = require('../../../libs/elasticsearch')
 
 const productPopulate = [
   'category',
@@ -15,6 +16,11 @@ const productPopulate = [
 ]
 
 module.exports = {
+  async search(ctx) {
+    const results = await searchProducts({ query: ctx.query.q })
+    ctx.send(results)
+  },
+
   async uploadImage(ctx) {
     ctx.send(await uploadFiles(ctx, {
       modelName: 'product',
@@ -107,6 +113,7 @@ module.exports = {
       entity = await strapi.services.product.findOne({ id: entity.id }, productPopulate)
     }
 
+    indexProduct(entity)
     return sanitizeEntity(entity, { model: strapi.models.product });
   },
 }
