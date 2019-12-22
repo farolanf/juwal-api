@@ -17,7 +17,8 @@ const productPopulate = [
 
 module.exports = {
   async search(ctx) {
-    const results = await searchProducts({ query: ctx.query.q })
+    const attrs = ctx.query.attrs ? JSON.parse(ctx.query.attrs) : null
+    const results = await searchProducts({ query: ctx.query.q, attrs })
     ctx.send(results)
   },
 
