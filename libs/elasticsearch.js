@@ -1,12 +1,18 @@
 const _ = require('lodash')
 const { Client } = require('@elastic/elasticsearch')
 
-const esHost = 'http://localhost:9200'
+let client
 
-const client = new Client({ node: esHost })
+const getClient = () => {
+  if (!client) {
+    const esHost = strapi.config.environments[strapi.config.environment].esHost
+    client = new Client({ node: esHost })
+  }
+  return client
+}
 
 exports.indexProduct = product => {
-  return client.index({
+  return getClient().index({
     index: 'products',
     body: {
       ..._.pick(product, ['id', 'title', 'description', 'price']),
@@ -19,7 +25,7 @@ exports.indexProduct = product => {
 }
 
 exports.searchProducts = ({ query, attrs }) => {
-  return client.search({
+  return getClient().search({
     index: 'products',
     body: {
       query: {
