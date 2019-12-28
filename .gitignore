@@ -111,4 +111,5 @@ exports
 .cache
 build
 
-config/environments
+.env*
+!.env.example

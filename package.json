@@ -24,6 +24,7 @@
     "@elastic/elasticsearch": "^7.5.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
     "knex": "latest",
     "lodash": "^4.17.5",
     "mocha": "^6.2.2",
