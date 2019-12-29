@@ -1,3 +1,3 @@
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYzY5MDk5MzhmODc5NzE5MzBlZTg4MCIsImlhdCI6OTU3MzU1NjU0OSwiZXhwIjoxOTc2MTQ4NTQ5fQ.q_xQQllv0Xr8v80wyIpqXCdTBu_M62Wu5XviawSScGg'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDRiYjJjNjRhOWI3MjJjMDJhZjUxNyIsImlhdCI6OTU3MzU1NjU0OSwiZXhwIjoxOTc2MTQ4NTQ5fQ.leMN1m-70gG04CLCBpFhctpZTZ7ekZqyfeidBtAbeGQ'
 
 exports.bearerToken = `Bearer ${token}`
