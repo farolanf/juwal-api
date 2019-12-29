@@ -3,11 +3,17 @@ const fs = require('fs')
 const _ = require('lodash')
 const yaml = require('yaml')
 
+const { createIndex } = require('../../../libs/elasticsearch')
+
 /**
  * Read the documentation () to implement custom controller functions
  */
 
 module.exports = {
+  async initES (ctx) {
+    await createIndex()
+    ctx.send('ok')
+  },
   async resetCategories (ctx) {
     const content = fs.readFileSync('data/categories.yml')
     const categories = yaml.parse(content.toString())

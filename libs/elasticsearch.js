@@ -11,6 +11,57 @@ const getClient = () => {
   return client
 }
 
+exports.createIndex = () => {
+  return getClient().indices.create({
+    index: 'products',
+    body: {
+      mappings: {
+        properties: {
+          id: {
+            type: 'text',
+            fields: {
+              keyword: {
+                type: 'keyword',
+                ignore_above: 256
+              }
+            }
+          },
+          title: {
+            type: 'text',
+            fields: {
+              keyword: {
+                type: 'keyword',
+                ignore_above: 256
+              }
+            }
+          },
+          description: {
+            type: 'text',
+            fields: {
+              keyword: {
+                type: 'keyword',
+                ignore_above: 256
+              }
+            }
+          },
+          price: { type: 'long' },
+          attrs: {
+            type: 'nested',
+            properties: {
+              label: {
+                type: 'keyword'
+              },
+              value: {
+                type: 'keyword'
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+}
+
 exports.indexProduct = product => {
   return getClient().index({
     index: 'products',

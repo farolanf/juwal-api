@@ -2,6 +2,16 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/devel/init-es",
+      "handler": "Devel.initES",
+      "config": {
+        "policies": [
+          "global.isDevelopment"
+        ]
+      }
+    },
+    {
+      "method": "GET",
       "path": "/devel/reset-categories",
       "handler": "Devel.resetCategories",
       "config": {
