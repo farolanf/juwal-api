@@ -81,6 +81,7 @@ module.exports = {
     await strapi.services.product.update({ id: entity.id }, entity)
 
     entity = await strapi.services.product.findOne({ id: entity.id }, productPopulate)
+    indexProduct(entity)
     return sanitizeEntity(entity, { model: strapi.models.product });
   },
 
