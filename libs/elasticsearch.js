@@ -66,6 +66,9 @@ exports.indexProduct = product => {
   const envConfig = strapi.config.environments[strapi.config.environment]
   return getClient().index({
     index: 'products',
+    id: product.id,
+    // update if exists and create if not
+    op_type: 'index',
     body: {
       ..._.pick(product, ['id', 'title', 'description', 'price']),
       attrs: product.fields.map(fv => ({
