@@ -1,4 +1,5 @@
 {
+  "apiUrl": "${process.env.API_URL}",
   "frontendHost": "${process.env.FRONTEND_HOST}",
   "esHost": "${process.env.ES_HOST}"
 }

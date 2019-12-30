@@ -63,6 +63,7 @@ exports.createIndex = () => {
 }
 
 exports.indexProduct = product => {
+  const envConfig = strapi.config.environments[strapi.config.environment]
   return getClient().index({
     index: 'products',
     body: {
@@ -70,7 +71,10 @@ exports.indexProduct = product => {
       attrs: product.fields.map(fv => ({
         label: fv.field.label,
         value: fv.value.value
-      }))
+      })),
+      images: product.images.filter(item => item).map(item => {
+        return item.url[0] === '/' ? `${envConfig.apiUrl}${item.url}` : item.url
+      })
     }
   })
 }
